@@ -1,0 +1,25 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="ngAzrHdctm6_MITdhCTY">
+    <mxGraphModel dx="1030" dy="527" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="NL3cd9keZC4dSI9ShanM-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="E-Commerce Product Search System" vertex="1">
+          <mxGeometry height="60" width="120" x="340" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="NL3cd9keZC4dSI9ShanM-3" edge="1" parent="1" source="NL3cd9keZC4dSI9ShanM-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NL3cd9keZC4dSI9ShanM-1" value="Search / Filter / Sort / Suggestions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NL3cd9keZC4dSI9ShanM-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User" vertex="1">
+          <mxGeometry height="50" width="120" x="340" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NL3cd9keZC4dSI9ShanM-5" edge="1" parent="1" source="NL3cd9keZC4dSI9ShanM-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="NL3cd9keZC4dSI9ShanM-1" value="Product Create / Update / Delete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NL3cd9keZC4dSI9ShanM-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Product Admin / Catalogue User" vertex="1">
+          <mxGeometry height="60" width="120" x="340" y="310" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
