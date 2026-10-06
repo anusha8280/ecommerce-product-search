@@ -1,0 +1,90 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="UruNBXKf4t_bKWCNY6N7">
+    <mxGraphModel dx="1373" dy="749" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="xd9xiWRHo9MVSOPnMmxP-2" edge="1" parent="1" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;endArrow=none;endFill=0;dashed=1;dashPattern=8 8;" value="──Search────────►">
+          <mxGeometry relative="1" width="80" x="-0.7538" y="60" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="40" y="80" as="sourcePoint" />
+            <mxPoint x="40" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xd9xiWRHo9MVSOPnMmxP-3" parent="1" style="text;whiteSpace=wrap;fontSize=19;" value="User" vertex="1">
+          <mxGeometry height="40" width="40" x="20" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="xd9xiWRHo9MVSOPnMmxP-4" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;dashed=1;dashPattern=12 12;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="160" y="720" as="sourcePoint" />
+            <mxPoint x="160" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xd9xiWRHo9MVSOPnMmxP-5" parent="1" style="text;whiteSpace=wrap;fontSize=15;" value="API Gateway" vertex="1">
+          <mxGeometry height="40" width="100" x="120" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-1" parent="1" style="text;whiteSpace=wrap;html=1;" value="◄── Results ──" vertex="1">
+          <mxGeometry height="40" width="130" x="40" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-2" parent="1" style="text;whiteSpace=wrap;html=1;strokeWidth=0;" value="◄── Results ──" vertex="1">
+          <mxGeometry height="40" width="130" x="40" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-3" parent="1" style="text;whiteSpace=wrap;html=1;" value="── Request ───►" vertex="1">
+          <mxGeometry height="40" width="140" x="160" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-6" parent="1" style="text;whiteSpace=wrap;html=1;" value="◄── Results ──" vertex="1">
+          <mxGeometry height="40" width="130" x="160" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-7" parent="1" style="text;whiteSpace=wrap;html=1;" value="◄── Results ──" vertex="1">
+          <mxGeometry height="40" width="130" x="160" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-8" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;dashed=1;dashPattern=12 12;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="260" y="734.1000651041667" as="sourcePoint" />
+            <mxPoint x="260" y="65.9" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-9" parent="1" style="text;whiteSpace=wrap;html=1;" value="── Check ───►" vertex="1">
+          <mxGeometry height="40" width="130" x="260" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-10" parent="1" style="text;whiteSpace=wrap;html=1;" value="◄── HIT ─────" vertex="1">
+          <mxGeometry height="40" width="130" x="260" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-11" parent="1" style="text;whiteSpace=wrap;html=1;" value="── MISS ────►" vertex="1">
+          <mxGeometry height="40" width="130" x="260" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-12" parent="1" style="text;whiteSpace=wrap;html=1;" value="─ Search ────────────────►" vertex="1">
+          <mxGeometry height="40" width="230" x="260" y="425" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-14" parent="1" style="text;whiteSpace=wrap;html=1;" value="◄── Results ──────────────" vertex="1">
+          <mxGeometry height="40" width="230" x="260" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-15" parent="1" style="text;whiteSpace=wrap;html=1;" value="── Cache ───►" vertex="1">
+          <mxGeometry height="40" width="130" x="260" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-16" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;dashed=1;dashPattern=12 12;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="370" y="783.199951171875" as="sourcePoint" />
+            <mxPoint x="360" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-17" parent="1" style="text;whiteSpace=wrap;html=1;" value="Search Service" vertex="1">
+          <mxGeometry height="40" width="110" x="230" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-18" parent="1" style="text;whiteSpace=wrap;html=1;" value="Redis" vertex="1">
+          <mxGeometry height="40" width="60" x="340" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-19" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;dashed=1;dashPattern=12 12;strokeWidth=1;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="460" y="946.4" as="sourcePoint" />
+            <mxPoint x="460" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wvx8ikJ8dUqDGTgGMbyY-20" parent="1" style="text;whiteSpace=wrap;html=1;" value="OpenSearch" vertex="1">
+          <mxGeometry height="40" width="100" x="425" y="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

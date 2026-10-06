@@ -1,6 +1,30 @@
 version: '3.8'
 
 services:
+  api:
+    build:
+      context: ./services/api
+      dockerfile: Dockerfile
+    container_name: ecommerce-api
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_SERVER=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgrespassword
+      - POSTGRES_DB=ecommerce_db
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - OPENSEARCH_HOST=opensearch
+      - OPENSEARCH_PORT=9200
+    depends_on:
+      - postgres
+      - redis
+      - kafka
+      - opensearch
+
   postgres:
     image: postgres:15-alpine
     container_name: ecommerce-postgres

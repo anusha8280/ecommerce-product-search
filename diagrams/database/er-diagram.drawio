@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2026-10-05T11:31:00.000Z" agent="Antigravity" version="21.0.0" type="device">
+  <diagram name="Database ER Diagram" id="db-er-diag">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Table: users -->
+        <mxCell id="tbl_users" value="users&#xa;-------------------&#xa;PK id: BIGSERIAL&#xa;name: VARCHAR(100)&#xa;email: VARCHAR(255) UNIQUE&#xa;created_at: TIMESTAMP" style="shape=swimlane;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="220" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Table: categories -->
+        <mxCell id="tbl_categories" value="categories&#xa;-------------------&#xa;PK id: BIGSERIAL&#xa;name: VARCHAR(100) UNIQUE&#xa;description: TEXT&#xa;created_at: TIMESTAMP" style="shape=swimlane;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="360" y="60" width="220" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Table: brands -->
+        <mxCell id="tbl_brands" value="brands&#xa;-------------------&#xa;PK id: BIGSERIAL&#xa;name: VARCHAR(100) UNIQUE&#xa;description: TEXT" style="shape=swimlane;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="660" y="60" width="220" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Table: products -->
+        <mxCell id="tbl_products" value="products&#xa;-------------------&#xa;PK id: BIGSERIAL&#xa;name: VARCHAR(255)&#xa;description: TEXT&#xa;price: DECIMAL(12,2)&#xa;FK category_id: BIGINT&#xa;FK brand_id: BIGINT&#xa;rating: DECIMAL(2,1)&#xa;stock_quantity: INTEGER&#xa;is_available: BOOLEAN&#xa;created_at: TIMESTAMP&#xa;updated_at: TIMESTAMP" style="shape=swimlane;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="510" y="270" width="230" height="260" as="geometry" />
+        </mxCell>
+
+        <!-- Table: product_attributes -->
+        <mxCell id="tbl_attrs" value="product_attributes&#xa;-------------------&#xa;PK id: BIGSERIAL&#xa;FK product_id: BIGINT&#xa;attribute_name: VARCHAR(100)&#xa;attribute_value: VARCHAR(255)" style="shape=swimlane;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="830" y="320" width="230" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Table: user_activities -->
+        <mxCell id="tbl_activities" value="user_activities&#xa;-------------------&#xa;PK id: BIGSERIAL&#xa;FK user_id: BIGINT&#xa;FK product_id: BIGINT&#xa;activity_type: VARCHAR(50)&#xa;created_at: TIMESTAMP" style="shape=swimlane;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="60" y="320" width="240" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships -->
+        <!-- Categories 1:N Products -->
+        <mxCell id="rel_cat_prod" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;" edge="1" parent="1" source="tbl_categories" target="tbl_products">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Brands 1:N Products -->
+        <mxCell id="rel_brand_prod" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;" edge="1" parent="1" source="tbl_brands" target="tbl_products">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Products 1:N ProductAttributes -->
+        <mxCell id="rel_prod_attr" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;" edge="1" parent="1" source="tbl_products" target="tbl_attrs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Users 1:N UserActivities -->
+        <mxCell id="rel_user_act" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;" edge="1" parent="1" source="tbl_users" target="tbl_activities">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Products 1:N UserActivities -->
+        <mxCell id="rel_prod_act" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;" edge="1" parent="1" source="tbl_products" target="tbl_activities">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

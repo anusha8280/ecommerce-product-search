@@ -1,77 +1,107 @@
-<mxfile host="app.diagrams.net">
-  <diagram name="Page-1" id="pmfQV_rx__2_m2OSszg6">
-    <mxGraphModel dx="1030" dy="527" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<mxfile host="app.diagrams.net" modified="2026-10-05T11:29:00.000Z" agent="Antigravity" version="21.0.0" type="device">
+  <diagram name="High-Level Architecture" id="hld-arch">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-4" edge="1" parent="1" source="qfx6lfk5cKq3wYzxe6GB-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="qfx6lfk5cKq3wYzxe6GB-3">
+
+        <!-- User -->
+        <mxCell id="n_user" value="USER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="40" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- API Gateway -->
+        <mxCell id="n_gw" value="API GATEWAY" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="130" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Services Row -->
+        <mxCell id="n_prod" value="Product Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="240" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n_search" value="Search Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="240" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n_rec" value="Recommendation Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="240" width="170" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Infra Layer -->
+        <mxCell id="n_pg" value="PostgreSQL&#xa;[Source of Truth]" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="380" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n_redis" value="Redis&#xa;[Search Result Cache]" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="380" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n_kafka" value="Kafka&#xa;[Product Event Streaming]" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="550" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n_indexer" value="Search Indexer&#xa;[Consumes Kafka events &amp; updates OpenSearch]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="570" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n_os" value="OpenSearch&#xa;[Search Index]" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="550" width="170" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e_u_gw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="n_user" target="n_gw">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&#xa;User&#xa;&#xa;" vertex="1">
-          <mxGeometry height="60" width="120" x="320" y="70" as="geometry" />
+
+        <mxCell id="e_gw_prod" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="n_gw" target="n_prod">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-9" edge="1" parent="1" source="qfx6lfk5cKq3wYzxe6GB-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="qfx6lfk5cKq3wYzxe6GB-5">
+
+        <mxCell id="e_gw_search" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="n_gw" target="n_search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_gw_rec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="n_gw" target="n_rec">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Service to DB/Cache -->
+        <mxCell id="e_prod_pg" value="Read/Write" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="n_prod" target="n_pg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_prod_kafka" value="Publish Events" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="n_prod" target="n_kafka">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="380" y="280" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="120" y="270" />
+              <mxPoint x="120" y="600" />
+            </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-10" edge="1" parent="1" source="qfx6lfk5cKq3wYzxe6GB-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="qfx6lfk5cKq3wYzxe6GB-6">
+
+        <mxCell id="e_search_redis" value="Cache Lookup/Set" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="n_search" target="n_redis">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&#xa;API Gateway&#xa;&#xa;" vertex="1">
-          <mxGeometry height="60" width="120" x="320" y="180" as="geometry" />
+
+        <mxCell id="e_search_os" value="Query Search Index" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="n_search" target="n_os">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="270" />
+              <mxPoint x="660" y="500" />
+              <mxPoint x="845" y="500" />
+            </Array>
+          </mxGeometry>
         </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Product Service" vertex="1">
-          <mxGeometry height="60" width="120" x="140" y="300" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-16" edge="1" parent="1" source="qfx6lfk5cKq3wYzxe6GB-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="qfx6lfk5cKq3wYzxe6GB-13" value="">
+
+        <mxCell id="e_kafka_indexer" value="Consume Events" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="n_kafka" target="n_indexer">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Search Service" vertex="1">
-          <mxGeometry height="60" width="120" x="340" y="300" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-17" edge="1" parent="1" source="qfx6lfk5cKq3wYzxe6GB-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="qfx6lfk5cKq3wYzxe6GB-14" value="">
+
+        <mxCell id="e_indexer_os" value="Update Index" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="n_indexer" target="n_os">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Recommendation Service" vertex="1">
-          <mxGeometry height="60" width="120" x="530" y="300" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-11" edge="1" parent="1" source="qfx6lfk5cKq3wYzxe6GB-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.573;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;" target="qfx6lfk5cKq3wYzxe6GB-7">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-19" edge="1" parent="1" source="qfx6lfk5cKq3wYzxe6GB-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="qfx6lfk5cKq3wYzxe6GB-18" value="">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&#xa;PostgreSQL&#xa;&#xa;" vertex="1">
-          <mxGeometry height="60" width="120" x="130" y="410" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&#xa;Redis &#xa;&#xa;" vertex="1">
-          <mxGeometry height="60" width="120" x="340" y="410" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&#xa;User Data&#xa;&#xa;" vertex="1">
-          <mxGeometry height="60" width="120" x="530" y="410" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-15" edge="1" parent="1" source="qfx6lfk5cKq3wYzxe6GB-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.573;entryY=0.013;entryDx=0;entryDy=0;entryPerimeter=0;" target="qfx6lfk5cKq3wYzxe6GB-12">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-22" edge="1" parent="1" source="qfx6lfk5cKq3wYzxe6GB-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="qfx6lfk5cKq3wYzxe6GB-21" value="">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&#xa;Kafka &#xa;&#xa;" vertex="1">
-          <mxGeometry height="50" width="120" x="130" y="530" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-20" parent="1" style="text;whiteSpace=wrap;html=1;" value="Product Events" vertex="1">
-          <mxGeometry height="40" width="110" x="190" y="480" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-24" edge="1" parent="1" source="qfx6lfk5cKq3wYzxe6GB-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="qfx6lfk5cKq3wYzxe6GB-23" value="">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&#xa;Search Indexer&#xa;&#xa;" vertex="1">
-          <mxGeometry height="60" width="120" x="130" y="630" as="geometry" />
-        </mxCell>
-        <mxCell id="qfx6lfk5cKq3wYzxe6GB-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&#xa;OpenSearch &#xa;&#xa;" vertex="1">
-          <mxGeometry height="60" width="120" x="130" y="730" as="geometry" />
-        </mxCell>
+
       </root>
     </mxGraphModel>
   </diagram>

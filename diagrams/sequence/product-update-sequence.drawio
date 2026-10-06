@@ -1,0 +1,108 @@
+<mxfile host="app.diagrams.net" modified="2026-10-05T11:26:00.000Z" agent="Antigravity" version="21.0.0" type="device">
+  <diagram name="Product Update Sequence" id="prod-update-seq">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Lifelines -->
+        <mxCell id="part_admin" value="Product Admin" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="110" height="550" as="geometry" />
+        </mxCell>
+
+        <mxCell id="part_gw" value="API Gateway" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="240" y="80" width="110" height="550" as="geometry" />
+        </mxCell>
+
+        <mxCell id="part_prod" value="Product Service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="420" y="80" width="120" height="550" as="geometry" />
+        </mxCell>
+
+        <mxCell id="part_pg" value="PostgreSQL&#xa;(Source of Truth)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="600" y="80" width="130" height="550" as="geometry" />
+        </mxCell>
+
+        <mxCell id="part_kafka" value="Kafka&#xa;(Async Events)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="790" y="80" width="120" height="550" as="geometry" />
+        </mxCell>
+
+        <mxCell id="part_indexer" value="Search Indexer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="960" y="80" width="110" height="550" as="geometry" />
+        </mxCell>
+
+        <mxCell id="part_os" value="OpenSearch&#xa;(Search Index)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="80" width="110" height="550" as="geometry" />
+        </mxCell>
+
+        <!-- Messages -->
+        <mxCell id="m1" value="POST/PUT/DELETE /api/v1/products" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" edge="1" parent="1" source="part_admin" target="part_gw">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="180" y="160" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m2" value="Forward Mutation Request" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" edge="1" parent="1" source="part_gw" target="part_prod">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="360" y="190" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m3" value="1. Write / Update / Delete Record" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" edge="1" parent="1" source="part_prod" target="part_pg">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="540" y="220" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m4" value="2. Transaction Committed (200/201 OK)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" edge="1" parent="1" source="part_pg" target="part_prod">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="540" y="250" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m5" value="3. Publish Event (product-events)&#xa;[PRODUCT_CREATED | UPDATED | DELETED]&#xa;Payload: {event_id, event_type, product_id, timestamp}" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;fontColor=#b85450;fontStyle=1" edge="1" parent="1" source="part_prod" target="part_kafka">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="710" y="290" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m6" value="HTTP 200 OK (Response to Admin)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" edge="1" parent="1" source="part_prod" target="part_gw">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="360" y="340" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m7" value="HTTP Response" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" edge="1" parent="1" source="part_gw" target="part_admin">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="180" y="360" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Async Section -->
+        <mxCell id="m8" value="4. Consume Event (search-indexer-group)" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" edge="1" parent="1" source="part_kafka" target="part_indexer">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="900" y="410" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m9" value="5. Index / Update / Delete Document" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" edge="1" parent="1" source="part_indexer" target="part_os">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="1060" y="450" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m10" value="Index Updated Ack" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" edge="1" parent="1" source="part_os" target="part_indexer">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="1060" y="480" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m11" value="6. Commit Offset" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" edge="1" parent="1" source="part_indexer" target="part_kafka">
+          <mxGeometry y="10" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="900" y="510" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

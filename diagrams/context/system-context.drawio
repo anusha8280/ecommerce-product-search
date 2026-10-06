@@ -1,24 +1,38 @@
-<mxfile host="app.diagrams.net">
-  <diagram name="Page-1" id="ngAzrHdctm6_MITdhCTY">
-    <mxGraphModel dx="1030" dy="527" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<mxfile host="app.diagrams.net" modified="2026-10-05T11:30:00.000Z" agent="Antigravity" version="21.0.0" type="device">
+  <diagram name="System Context" id="sys-context">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="NL3cd9keZC4dSI9ShanM-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="E-Commerce Product Search System" vertex="1">
-          <mxGeometry height="60" width="120" x="340" y="190" as="geometry" />
+
+        <!-- Customer Actor -->
+        <mxCell id="act_customer" value="Customer&#xa;(End User)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="120" y="250" width="50" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="NL3cd9keZC4dSI9ShanM-3" edge="1" parent="1" source="NL3cd9keZC4dSI9ShanM-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NL3cd9keZC4dSI9ShanM-1" value="Search / Filter / Sort / Suggestions">
+
+        <!-- System Box -->
+        <mxCell id="sys_box" value="E-Commerce Product Search System" style="shape=swimlane;whiteSpace=wrap;html=1;startSize=40;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=14;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="160" width="460" height="280" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sys_content" value="Core System Capabilities:&#xa;&#xa;• Search Products (Keyword Match)&#xa;• Filter Products (Category, Brand, Price, Rating, Stock)&#xa;• Sort Products (Relevance, Price, Rating, Newest)&#xa;• View Recommendations (Rule-Based Suggestions)&#xa;• Catalog Management (Create, Update, Delete Product)&#xa;• Real-time Search Index Sync via Kafka" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;spacingLeft=20;spacingTop=20;" vertex="1" parent="sys_box">
+          <mxGeometry y="40" width="460" height="240" as="geometry" />
+        </mxCell>
+
+        <!-- Admin Actor -->
+        <mxCell id="act_admin" value="Admin / Product Manager" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="920" y="250" width="50" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Interactions -->
+        <mxCell id="e_cust_sys" value="• Search Products&#xa;• Filter Products&#xa;• Sort Products&#xa;• View Recommendations" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;fontColor=#274e13;" edge="1" parent="1" source="act_customer" target="sys_box">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NL3cd9keZC4dSI9ShanM-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User" vertex="1">
-          <mxGeometry height="50" width="120" x="340" y="60" as="geometry" />
-        </mxCell>
-        <mxCell id="NL3cd9keZC4dSI9ShanM-5" edge="1" parent="1" source="NL3cd9keZC4dSI9ShanM-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="NL3cd9keZC4dSI9ShanM-1" value="Product Create / Update / Delete">
+
+        <mxCell id="e_admin_sys" value="• Create Product&#xa;• Update Product&#xa;• Delete Product" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;fontColor=#7f6000;" edge="1" parent="1" source="act_admin" target="sys_box">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="NL3cd9keZC4dSI9ShanM-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Product Admin / Catalogue User" vertex="1">
-          <mxGeometry height="60" width="120" x="340" y="310" as="geometry" />
-        </mxCell>
+
       </root>
     </mxGraphModel>
   </diagram>
